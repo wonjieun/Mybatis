@@ -1,0 +1,15 @@
+1. 
+실행클래스: main()
+- 사용자의 입력을 받음
+- Dept 객체에 저장
+
+2.
+Dao : InsertDao
+- 입력받은 객체 전달
+- 객체를 DB에 저장(INSERT SQL)
+
+3.
+실행클래스: main()
+- INSERT결과 확인 - selectByDeptNo() 수행
+
+Deptno deptDao = new DeptDao();

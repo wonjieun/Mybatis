@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- myBatis mapper dtd: "이것이 my~ 다" -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- DeptDao파일과 연결 -->
+<!-- 자바 객체랑 MyBatis와 연결 -->
+<mapper namespace="dao.DeptDao">
+
+	<!-- select일 때만 resultType을 고려한다 -->
+	<!-- insert, delete, update일 때는 parameterType을 고려한다 -->
+	
+	<!-- public Dept selectByDeptNo(int deptNo)와 매핑 -->
+	<select id="selectByDeptNo"
+		parameterType="int"
+		resultType="dto.Dept">
+		<!-- int deptNo parameter가 #{deptNo }로 넘어옴 -->
+		<!-- * (deptNo, dName, loc) -->
+		SELECT * FROM dept WHERE deptno = #{deptNo }
+	</select>
+	
+	<!-- dept를 generic으로 가지는 list를 자동으로 반환 -->
+	<select id="selectAll" resultType="dto.Dept">
+		SELECT * FROM dept
+		ORDER BY deptno
+	</select>
+
+	<!-- type을 full name으로 적어주기 -->
+	<insert id="insert" parameterType="dto.Dept">
+		INSERT INTO dept (deptno, dname, loc)
+		VALUES (#{deptNo }, #{dName }, #{loc })
+	</insert>
+
+</mapper>
